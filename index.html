@@ -155,240 +155,180 @@
 
         .card {
             background: white;
-            border-left: 4px solid var(--secondary-color);
             padding: 25px;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--accent-color);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
         }
 
         .card h4 {
-            color: var(--secondary-color);
-            margin-bottom: 10px;
+            color: var(--primary-color);
+            margin-bottom: 12px;
             font-size: 1.2em;
         }
 
         .card p {
-            margin-bottom: 10px;
+            font-size: 0.95em;
         }
 
-        .card.highlight {
-            border-left-color: var(--accent-color);
-            background: rgba(244, 164, 96, 0.05);
-        }
-
-        /* Stats */
-        .stat-box {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin: 15px;
-        }
-
-        .stat-value {
-            font-size: 2.5em;
-            font-weight: bold;
-            color: var(--secondary-color);
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            color: var(--text-color);
-            font-size: 1em;
-        }
-
-        /* Table */
-        .table-container {
-            overflow-x: auto;
-            margin: 30px 0;
-        }
-
+        /* Tables */
         table {
             width: 100%;
             border-collapse: collapse;
+            margin: 30px 0;
             background: white;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        thead {
+            background: var(--primary-color);
+            color: white;
         }
 
         th {
-            background: var(--primary-color);
-            color: white;
             padding: 15px;
             text-align: left;
             font-weight: 600;
         }
 
         td {
-            padding: 15px;
+            padding: 12px 15px;
             border-bottom: 1px solid var(--border-color);
         }
 
-        tr:hover {
+        tbody tr:hover {
             background: var(--light-bg);
         }
 
-        /* Key Numbers */
-        .key-numbers {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 40px;
-            border-radius: 8px;
-            margin: 30px 0;
-        }
-
-        .numbers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .number-item h4 {
-            margin-bottom: 10px;
-            font-size: 0.9em;
-            opacity: 0.9;
-        }
-
-        .number-item .value {
-            font-size: 2em;
-            font-weight: bold;
+        tbody tr:last-child td {
+            border-bottom: none;
         }
 
         /* Timeline */
-        .timeline {
+        .timeline-items {
             position: relative;
-            padding: 20px 0;
+            padding: 30px 0;
         }
 
         .timeline-item {
             display: flex;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             position: relative;
         }
 
         .timeline-dot {
-            width: 40px;
-            height: 40px;
-            background: var(--secondary-color);
+            width: 50px;
+            height: 50px;
+            background: var(--accent-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             font-weight: bold;
-            min-width: 40px;
-            margin-right: 20px;
-            box-shadow: 0 2px 8px rgba(45, 80, 22, 0.3);
+            color: white;
+            flex-shrink: 0;
+            font-size: 1.2em;
+        }
+
+        .timeline-item:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 50px;
+            width: 2px;
+            height: 40px;
+            background: var(--border-color);
         }
 
         .timeline-content {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 2px solid var(--secondary-color);
-            flex: 1;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-left: 30px;
         }
 
         .timeline-date {
             font-weight: bold;
-            color: var(--secondary-color);
-            margin-bottom: 5px;
+            color: var(--accent-color);
+            font-size: 0.95em;
         }
 
         .timeline-title {
-            font-size: 1.1em;
-            margin-bottom: 5px;
+            font-size: 1.3em;
             color: var(--primary-color);
+            margin: 5px 0;
         }
 
-        /* Risk Matrix */
-        .risk-matrix {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 30px 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
+        /* Risk Items */
         .risk-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px;
-            margin: 10px 0;
-            border-left: 4px solid var(--secondary-color);
-            background: var(--light-bg);
-            border-radius: 4px;
+            display: grid;
+            grid-template-columns: 40px 1fr 100px 100px;
+            gap: 20px;
+            align-items: start;
+            padding: 20px;
+            background: white;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--warning-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         .risk-rank {
             font-weight: bold;
-            color: var(--secondary-color);
-            min-width: 30px;
+            color: var(--warning-color);
+            font-size: 1.2em;
         }
 
-        .risk-name {
-            flex: 1;
-            margin: 0 20px;
+        .risk-probability, .risk-impact {
+            text-align: center;
             font-weight: 500;
-        }
-
-        .risk-probability {
-            background: var(--secondary-color);
-            color: white;
-            padding: 5px 10px;
+            padding: 8px;
             border-radius: 4px;
-            font-size: 0.9em;
-            margin-right: 10px;
-        }
-
-        .risk-impact {
-            background: var(--warning-color);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 0.9em;
+            background: var(--light-bg);
         }
 
         /* FAQ */
         .faq-item {
+            margin-bottom: 20px;
             background: white;
-            margin: 20px 0;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         .faq-question {
             padding: 20px;
+            background: var(--light-bg);
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            user-select: none;
-            background: var(--light-bg);
+            transition: background 0.3s ease;
         }
 
         .faq-question:hover {
-            background: rgba(0,0,0,0.03);
+            background: #f0f0f0;
         }
 
         .faq-question h4 {
-            flex: 1;
             margin: 0;
             color: var(--primary-color);
+            flex: 1;
         }
 
         .faq-toggle {
             font-size: 1.5em;
-            color: var(--secondary-color);
+            color: var(--accent-color);
             transition: transform 0.3s ease;
+        }
+
+        .faq-toggle.open {
+            transform: rotate(45deg);
         }
 
         .faq-answer {
@@ -396,50 +336,34 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease, padding 0.3s ease;
-            background: white;
         }
 
         .faq-answer.open {
             padding: 20px;
-            max-height: 500px;
+            max-height: 1000px;
         }
 
-        .faq-toggle.open {
-            transform: rotate(180deg);
-        }
-
-        /* CTA Button */
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
-            color: white;
-            padding: 15px 35px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin: 20px 10px 20px 0;
-            border: none;
-            cursor: pointer;
-            font-size: 1em;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(45, 80, 22, 0.3);
+        .faq-answer p {
+            margin-bottom: 0;
+            line-height: 1.8;
         }
 
         /* Footer */
         footer {
             background: var(--primary-color);
             color: white;
+            padding: 30px 0;
             text-align: center;
-            padding: 40px 0;
             margin-top: 60px;
         }
 
-        footer p {
-            margin-bottom: 10px;
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
 
         /* Responsive */
@@ -452,64 +376,27 @@
                 font-size: 1.1em;
             }
 
-            h2 {
-                font-size: 1.8em;
-            }
-
-            .tabs {
+            .tabs-container {
                 overflow-x: auto;
             }
 
             .tab {
-                padding: 15px 15px;
+                padding: 12px 15px;
                 font-size: 0.9em;
             }
 
-            .numbers-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .risk-item {
+                grid-template-columns: 1fr;
+                gap: 10px;
             }
 
-            .contact-info a {
-                display: block;
-                margin: 5px 0;
+            .risk-probability, .risk-impact {
+                grid-column: auto;
             }
-        }
 
-        /* Visibility Classes */
-        .text-center {
-            text-align: center;
-        }
-
-        .mt-30 {
-            margin-top: 30px;
-        }
-
-        .mb-30 {
-            margin-bottom: 30px;
-        }
-
-        .highlight-box {
-            background: rgba(244, 164, 96, 0.1);
-            border-left: 4px solid var(--accent-color);
-            padding: 20px;
-            border-radius: 4px;
-            margin: 20px 0;
-        }
-
-        .success-box {
-            background: rgba(45, 80, 22, 0.1);
-            border-left: 4px solid var(--success-color);
-            padding: 20px;
-            border-radius: 4px;
-            margin: 20px 0;
-        }
-
-        .warning-box {
-            background: rgba(217, 119, 6, 0.1);
-            border-left: 4px solid var(--warning-color);
-            padding: 20px;
-            border-radius: 4px;
-            margin: 20px 0;
+            .cards {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -517,360 +404,1568 @@
     <!-- Header -->
     <header>
         <div class="container">
-            <h1 id="header-company"></h1>
-            <p class="tagline" id="header-tagline"></p>
+            <h1 id="header-company">Nature Up Health</h1>
+            <p class="tagline" id="header-tagline">Investor Pitch Deck</p>
             <div class="contact-info">
-                <a href="#" id="header-email"></a>
-                <a href="#" id="header-phone"></a>
+                <a href="mailto:peter@natureuphealth.com" id="header-email">peter@natureuphealth.com</a>
+                <a href="tel:530-205-6245" id="header-phone">530.205.6245</a>
             </div>
         </div>
     </header>
 
-    <!-- Navigation Tabs -->
-    <div class="tabs">
+    <!-- Navigation -->
+    <nav class="tabs">
         <div class="tabs-container">
             <div class="tab active" data-section="executive">Executive Summary</div>
-            <div class="tab" data-section="problem">The Problem</div>
-            <div class="tab" data-section="solution">The Solution</div>
-            <div class="tab" data-section="market">Market & Competition</div>
-            <div class="tab" data-section="investment">The Investment</div>
-            <div class="tab" data-section="financial">Financial Model</div>
-            <div class="tab" data-section="impact">Impact & Outcomes</div>
+            <div class="tab" data-section="problem">Problem</div>
+            <div class="tab" data-section="solution">Solution</div>
+            <div class="tab" data-section="market">Market</div>
+            <div class="tab" data-section="investment">Investment</div>
+            <div class="tab" data-section="financial">Financial</div>
             <div class="tab" data-section="timeline">Timeline</div>
-            <div class="tab" data-section="risks">Risks & Mitigation</div>
+            <div class="tab" data-section="impact">Impact</div>
+            <div class="tab" data-section="risks">Risks</div>
             <div class="tab" data-section="team">Team</div>
             <div class="tab" data-section="regulatory">Regulatory</div>
             <div class="tab" data-section="faq">FAQ</div>
         </div>
-    </div>
+    </nav>
 
-    <!-- Main Content -->
-    <main class="container">
-
+    <!-- Content -->
+    <main>
         <!-- Executive Summary -->
         <section id="executive" class="section active">
-            <h2>Executive Summary</h2>
+            <div class="container">
+                <h2>Executive Summary</h2>
 
-            <div class="key-numbers">
-                <h3 style="color: white; margin-top: 0;">The Opportunity</h3>
-                <div class="numbers-grid">
-                    <div class="number-item">
-                        <h4>Capital Raising</h4>
-                        <div class="value" id="exec-capital"></div>
+                <div class="cards">
+                    <div class="card">
+                        <h4>Capital Raise</h4>
+                        <p><strong id="exec-capital">$3,000,000</strong></p>
                     </div>
-                    <div class="number-item">
-                        <h4>Annual Investor Return</h4>
-                        <div class="value" id="exec-return"></div>
+                    <div class="card">
+                        <h4>Investor Annual Return</h4>
+                        <p><strong id="exec-return">$150,000</strong></p>
                     </div>
-                    <div class="number-item">
-                        <h4>7-Year Annualized Return</h4>
-                        <div class="value" id="exec-annualized"></div>
+                    <div class="card">
+                        <h4>7-Year Annualized</h4>
+                        <p><strong id="exec-annualized">7.3%</strong></p>
                     </div>
-                    <div class="number-item">
-                        <h4>Timeline to 1st Payout</h4>
-                        <div class="value" id="exec-timeline"></div>
+                    <div class="card">
+                        <h4>Timeline to Payout</h4>
+                        <p><strong id="exec-timeline">14 months</strong></p>
                     </div>
                 </div>
-            </div>
 
-            <h3>Why It Matters</h3>
-            <ul id="exec-why"></ul>
+                <h3>Why This Matters</h3>
+                <ul id="exec-why"></ul>
 
-            <h3>The Model</h3>
-            <ul id="exec-model"></ul>
+                <h3>The Model</h3>
+                <ul id="exec-model"></ul>
 
-            <h3>Key Milestones</h3>
-            <div class="table-container">
+                <h3>Key Milestones</h3>
                 <table id="exec-milestones"></table>
             </div>
-
-            <div class="text-center mt-30">
-                <button class="cta-button" onclick="scrollToSection('investment')">Learn About the Investment</button>
-            </div>
         </section>
 
-        <!-- The Problem -->
+        <!-- Problem -->
         <section id="problem" class="section">
-            <h2 id="problem-title"></h2>
-
-            <div class="highlight-box">
-                <h3>California's Youth Mental Health Crisis</h3>
+            <div class="container">
+                <h2 id="problem-title">The Problem</h2>
                 <p id="problem-crisis"></p>
+
+                <h3>Key Statistics</h3>
+                <div class="cards" id="problem-stats"></div>
+
+                <h3 id="problem-gap-title">The Critical Gap</h3>
+                <p id="problem-gap-desc"></p>
+
+                <h3>Without intervention, what happens?</h3>
+                <ul id="problem-outcomes"></ul>
             </div>
-
-            <h3>Key Statistics</h3>
-            <div class="cards" id="problem-stats"></div>
-
-            <h3 id="problem-gap-title"></h3>
-            <p id="problem-gap-desc"></p>
-
-            <h3>The Outcome of Inaction</h3>
-            <ul id="problem-outcomes"></ul>
         </section>
 
-        <!-- The Solution -->
+        <!-- Solution -->
         <section id="solution" class="section">
-            <h2 id="solution-title"></h2>
+            <div class="container">
+                <h2 id="solution-title">The Solution</h2>
+                <p id="solution-desc"></p>
+                <p id="solution-type"></p>
 
-            <p id="solution-desc"></p>
+                <h3>Program Components</h3>
+                <div class="cards" id="solution-components"></div>
 
-            <h3 id="solution-type"></h3>
-            <div class="cards" id="solution-components"></div>
+                <h3>Secondary Revenue Stream</h3>
+                <p id="solution-secondary"></p>
 
-            <h3>Secondary Revenue</h3>
-            <p id="solution-secondary"></p>
-
-            <h3>Why This Model Works</h3>
-            <ul id="solution-why"></ul>
+                <h3>Why This Works</h3>
+                <ul id="solution-why"></ul>
+            </div>
         </section>
 
-        <!-- Market & Competition -->
+        <!-- Market -->
         <section id="market" class="section">
-            <h2>Market Opportunity & Competitive Landscape</h2>
+            <div class="container">
+                <h2>Market Opportunity</h2>
 
-            <h3>Market Overview</h3>
-            <div class="cards">
-                <div class="card highlight">
-                    <h4>Addressable Market</h4>
-                    <p><strong id="market-addressable"></strong></p>
-                    <p id="market-addressable-desc"></p>
+                <div class="cards">
+                    <div class="card">
+                        <h4>Addressable Market</h4>
+                        <p><strong id="market-addressable">2,250</strong></p>
+                        <p id="market-addressable-desc">Northern California ages 15-24</p>
+                    </div>
+                    <div class="card">
+                        <h4>Youth Population</h4>
+                        <p id="market-population">168,000 total</p>
+                    </div>
                 </div>
-                <div class="card highlight">
-                    <h4>Total Youth Population</h4>
-                    <p><strong id="market-population"></strong></p>
-                </div>
-            </div>
 
-            <h3>Demand Drivers</h3>
-            <ul id="market-drivers"></ul>
+                <h3>Demand Drivers</h3>
+                <ul id="market-drivers"></ul>
 
-            <h3>Payer Mix (Revenue Diversification)</h3>
-            <div class="table-container">
+                <h3>Payer Mix</h3>
                 <table id="market-payers"></table>
-            </div>
 
-            <h3>Competitive Landscape</h3>
-            <div class="cards" id="market-competitors"></div>
-
-            <div class="success-box">
-                <h4>Our Unique Position</h4>
+                <h3>Unique Position</h3>
                 <p id="market-unique"></p>
+
+                <h3>Competitive Landscape</h3>
+                <div class="cards" id="market-competitors"></div>
             </div>
         </section>
 
-        <!-- The Investment -->
+        <!-- Investment -->
         <section id="investment" class="section">
-            <h2>The Investment Structure</h2>
+            <div class="container">
+                <h2>The Investment Opportunity</h2>
 
-            <h3 id="investment-structure"></h3>
-            <p id="investment-structure-desc"></p>
+                <h3>Structure: <span id="investment-structure">PropCo/OpCo</span></h3>
+                <p id="investment-structure-desc"></p>
 
-            <h3>Capital Requirements</h3>
-            <div class="key-numbers">
-                <div class="numbers-grid">
-                    <div class="number-item">
-                        <h4>Total Capital Raise</h4>
-                        <div class="value" id="inv-total"></div>
+                <div class="cards">
+                    <div class="card">
+                        <h4>Total Raise</h4>
+                        <p><strong id="inv-total">$3,000,000</strong></p>
                     </div>
-                    <div class="number-item">
-                        <h4>Minimum per Investor</h4>
-                        <div class="value" id="inv-minimum"></div>
+                    <div class="card">
+                        <h4>Minimum Investment</h4>
+                        <p><strong id="inv-minimum">$50,000</strong></p>
                     </div>
                 </div>
-            </div>
 
-            <h3>Use of Funds</h3>
-            <div class="table-container">
+                <h3>Use of Funds</h3>
                 <table id="investment-use"></table>
-            </div>
 
-            <h3>Why PropCo/OpCo Model?</h3>
-            <ul id="investment-why"></ul>
-
-            <div class="success-box">
-                <h4>Bottom Line</h4>
-                <p>Real estate investment with contracted tenant (Gateway) provides stable, predictable returns backed by physical asset.</p>
+                <h3>Why This Structure?</h3>
+                <ul id="investment-why"></ul>
             </div>
         </section>
 
-        <!-- Financial Model -->
+        <!-- Financial -->
         <section id="financial" class="section">
-            <h2>Financial Model & Returns</h2>
+            <div class="container">
+                <h2>Financial Model & Investor Returns</h2>
 
-            <h3>Steady-State Annual Financials (Year 3+)</h3>
-            <div class="key-numbers">
-                <div class="numbers-grid">
-                    <div class="number-item">
-                        <h4>Annual Revenue</h4>
-                        <div class="value" id="fin-revenue"></div>
+                <div class="cards">
+                    <div class="card">
+                        <h4>Annual Revenue (Steady State)</h4>
+                        <p><strong id="fin-revenue">$1,425,000</strong></p>
                     </div>
-                    <div class="number-item">
-                        <h4>Operating Expenses</h4>
-                        <div class="value" id="fin-expenses"></div>
+                    <div class="card">
+                        <h4>Annual Expenses</h4>
+                        <p><strong id="fin-expenses">$75,000</strong></p>
                     </div>
-                    <div class="number-item">
-                        <h4>Net Operating Income</h4>
-                        <div class="value" id="fin-noi"></div>
+                    <div class="card">
+                        <h4>Annual NOI</h4>
+                        <p><strong id="fin-noi">$1,350,000</strong></p>
                     </div>
-                    <div class="number-item">
+                    <div class="card">
                         <h4>Investor Return</h4>
-                        <div class="value" id="fin-investor"></div>
+                        <p><strong id="fin-investor">$150,000 (5%)</strong></p>
                     </div>
                 </div>
-            </div>
 
-            <h3>Revenue Breakdown</h3>
-            <div class="table-container">
+                <h3>Revenue Breakdown</h3>
                 <table id="financial-revenue"></table>
-            </div>
 
-            <h3>7-Year Return Analysis</h3>
-            <div class="highlight-box">
-                <p><strong>Initial Investment:</strong> <span id="fin-analysis-investment"></span></p>
-                <p><strong>Annual Distributions (Yrs 3-7):</strong> <span id="fin-analysis-distributions"></span></p>
-                <p><strong>Property Appreciation (7 yrs):</strong> <span id="fin-analysis-appreciation"></span></p>
-                <p><strong>Exit Valuation (Year 7):</strong> <span id="fin-analysis-valuation"></span></p>
-                <p><strong>Total Return:</strong> <span id="fin-analysis-total"></span></p>
-                <p><strong>Annualized Return:</strong> <span id="fin-analysis-annualized"></span></p>
-            </div>
+                <h3>7-Year Return Analysis</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Initial Investment</td>
+                            <td id="fin-analysis-investment">$3,000,000</td>
+                        </tr>
+                        <tr>
+                            <td>Distributions (Years 3-7)</td>
+                            <td id="fin-analysis-distributions">$750,000</td>
+                        </tr>
+                        <tr>
+                            <td>Property Appreciation</td>
+                            <td id="fin-analysis-appreciation">$500,000</td>
+                        </tr>
+                        <tr>
+                            <td>Exit Valuation (Year 7)</td>
+                            <td id="fin-analysis-valuation">$1,570,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total Return</strong></td>
+                            <td><strong id="fin-analysis-total">$820,000 (27% over 7 years)</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Annualized</strong></td>
+                            <td><strong id="fin-analysis-annualized">7.3%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
 
-            <h3>Conservative Utilization Scenario</h3>
-            <p id="fin-conservative"></p>
-        </section>
-
-        <!-- Impact & Outcomes -->
-        <section id="impact" class="section">
-            <h2>Impact Metrics & Outcomes</h2>
-
-            <div class="success-box text-center">
-                <h3>Primary Outcome Goal</h3>
-                <p id="impact-primary"></p>
-            </div>
-
-            <h3>Reporting Framework</h3>
-            <p id="impact-reporting"></p>
-
-            <h3>Clinical Outcomes</h3>
-            <div class="table-container">
-                <table id="impact-clinical"></table>
-            </div>
-
-            <h3>Experience Metrics</h3>
-            <div class="table-container">
-                <table id="impact-experience"></table>
-            </div>
-
-            <h3>Provider & Financial Metrics</h3>
-            <div class="table-container">
-                <table id="impact-provider"></table>
+                <p id="fin-conservative"></p>
             </div>
         </section>
 
         <!-- Timeline -->
         <section id="timeline" class="section">
-            <h2>Project Timeline & Milestones</h2>
+            <div class="container">
+                <h2>Project Timeline & Milestones</h2>
 
-            <p>14-month critical path from funding close to first investor payout.</p>
+                <div class="timeline-items" id="timeline-items"></div>
 
-            <div class="timeline" id="timeline-items"></div>
-
-            <h3 style="margin-top: 40px;">Scenario Planning</h3>
-            <div class="table-container">
+                <h3>Scenario Analysis</h3>
                 <table id="timeline-scenarios"></table>
             </div>
         </section>
 
-        <!-- Risks & Mitigation -->
+        <!-- Impact -->
+        <section id="impact" class="section">
+            <div class="container">
+                <h2>Impact Metrics & Outcomes</h2>
+
+                <p id="impact-primary"></p>
+                <p id="impact-reporting"></p>
+
+                <h3>Clinical Outcomes</h3>
+                <table id="impact-clinical"></table>
+
+                <h3>Experience Metrics</h3>
+                <table id="impact-experience"></table>
+
+                <h3>Provider & Financial Metrics</h3>
+                <table id="impact-provider"></table>
+            </div>
+        </section>
+
+        <!-- Risks -->
         <section id="risks" class="section">
-            <h2>Risk Analysis & Mitigation</h2>
+            <div class="container">
+                <h2>Risk Analysis & Mitigation</h2>
 
-            <p id="risks-overview"></p>
+                <p><strong>Risk Profile:</strong> <span id="risks-overview"></span></p>
 
-            <h3>Major Risks (Ranked by Priority)</h3>
-            <div class="risk-matrix" id="risks-list"></div>
-
-            <div class="warning-box">
-                <h4>Overall Risk Profile</h4>
-                <p>MEDIUM risk (appropriate for healthcare real estate). Real asset backing + proven operator + contracted revenue = resilient model.</p>
+                <h3>Major Risks</h3>
+                <div id="risks-list"></div>
             </div>
         </section>
 
         <!-- Team -->
         <section id="team" class="section">
-            <h2>Team & Operations</h2>
+            <div class="container">
+                <h2>Team & Operations</h2>
 
-            <h3>Founder & CEO</h3>
-            <div class="card highlight">
-                <h4 id="team-founder-name"></h4>
-                <p id="team-founder-title"></p>
+                <h3 id="team-founder-name"></h3>
+                <p><em id="team-founder-title"></em></p>
                 <p id="team-founder-bio"></p>
-            </div>
 
-            <h3>Operating Partner: Gateway Mountain Center</h3>
-            <div class="cards">
-                <div class="card">
-                    <h4>Track Record</h4>
-                    <ul id="team-gateway-track"></ul>
-                </div>
-                <div class="card">
-                    <h4>Core Expertise</h4>
-                    <ul id="team-gateway-expertise"></ul>
-                </div>
-            </div>
+                <h3>Operating Partner: Gateway Mountain Center</h3>
 
-            <div class="success-box">
-                <h4>Why Gateway is the Right Operator</h4>
+                <h4>Track Record</h4>
+                <ul id="team-gateway-track"></ul>
+
+                <h4>Core Expertise</h4>
+                <ul id="team-gateway-expertise"></ul>
+
+                <h4>Why Gateway?</h4>
                 <ul id="team-gateway-why"></ul>
             </div>
         </section>
 
         <!-- Regulatory -->
         <section id="regulatory" class="section">
-            <h2>Regulatory & Permitting Roadmap</h2>
+            <div class="container">
+                <h2>Regulatory & Permitting Roadmap</h2>
 
-            <p>30-month integrated permitting timeline. Permits run in parallel; can operate before all approvals finalized.</p>
-
-            <div class="table-container">
+                <h3>Permits & Timeline</h3>
                 <table id="regulatory-permits"></table>
-            </div>
-
-            <div class="highlight-box">
-                <h4>Key De-Risking Factors</h4>
-                <ul>
-                    <li>Gateway already Medi-Cal certified (most complex approval)</li>
-                    <li>Early Forest Service permit engagement (6+ months pre-submission)</li>
-                    <li>Legal team onboarded to manage federal/state submissions</li>
-                    <li>County permits straightforward (architectural plans ready)</li>
-                </ul>
             </div>
         </section>
 
         <!-- FAQ -->
         <section id="faq" class="section">
-            <h2>Frequently Asked Questions</h2>
+            <div class="container">
+                <h2>Frequently Asked Questions</h2>
 
-            <div id="faq-items"></div>
+                <div id="faq-items"></div>
 
-            <div class="text-center mt-30">
-                <p>Still have questions?</p>
-                <a href="#" class="cta-button" id="faq-contact"></a>
+                <div style="text-align: center; margin-top: 40px; padding: 30px; background: var(--light-bg); border-radius: 8px;">
+                    <h3>Ready to Discuss?</h3>
+                    <p>Contact us to schedule a conversation about this investment opportunity.</p>
+                    <a id="faq-contact" href="mailto:peter@natureuphealth.com" style="display: inline-block; margin-top: 15px; padding: 12px 30px; background: var(--accent-color); color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Contact: peter@natureuphealth.com</a>
+                </div>
             </div>
         </section>
-
     </main>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p><strong id="footer-company"></strong></p>
-            <p id="footer-contact"></p>
-            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
-                This document contains forward-looking statements. Past performance does not guarantee future results.
-                Please consult with your financial advisor before investing.
-            </p>
+            <p>&copy; 2026 <span id="footer-company">Nature Up Health</span></p>
+            <div id="footer-contact"></div>
         </div>
     </footer>
 
-    <script src="config-loader.js"></script>
+    <!-- EMBED CONFIG.JSON DATA HERE -->
+    <script>
+        // CONFIG DATA - Embedded from config.json
+        // This allows the website to work on GitHub Pages without CORS issues
+        window.CONFIG = {
+  "company": {
+    "name": "Nature Up Health",
+    "tagline": "A specialized nature-based recovery lodge addressing California's critical gap in post-hospitalization care for high-risk youth",
+    "email": "peter@natureuphealth.com",
+    "phone": "530.205.6245",
+    "website": "natureuphealth.com"
+  },
+  "project": {
+    "facility_name": "Donner Summit Nature Healing Center",
+    "location": "Donner Summit, California",
+    "operator": "Gateway Mountain Center"
+  },
+  "problem": {
+    "title": "The Mental Health Crisis & The Gap",
+    "relapse_rate": "57%",
+    "relapse_description": "of youth relapse or are re-hospitalized within months after psychiatric discharge",
+    "crisis_stat": "1 in 5",
+    "crisis_description": "California adolescents has a diagnosed mental health condition",
+    "gap_description": "Northern California has no clinically supervised step-down recovery options to bridge the critical 7-30 day recovery window",
+    "key_stats": [
+      {
+        "label": "Psychiatric ED visits for youth",
+        "value": "Nearly doubled",
+        "period": "in recent years"
+      },
+      {
+        "label": "Outpatient psychiatry waitlists",
+        "value": "6-8 weeks",
+        "period": "typical delay"
+      },
+      {
+        "label": "Re-hospitalization cost",
+        "value": "$150,000+",
+        "period": "per stay"
+      }
+    ]
+  },
+  "solution": {
+    "title": "Donner Summit Nature Healing Center",
+    "description": "Specialized post-hospitalization recovery facility for youth and young adults (ages 16-24)",
+    "program_type": "10-day intensive recovery retreats",
+    "program_components": [
+      {
+        "name": "Clinical Supervision",
+        "description": "On-site psychiatrists, therapists, and counselors"
+      },
+      {
+        "name": "Nature Immersion",
+        "description": "Hiking, kayaking, rock climbing, backcountry activities"
+      },
+      {
+        "name": "Peer Support",
+        "description": "Cohort-based community with shared recovery journey"
+      },
+      {
+        "name": "Skill Building",
+        "description": "Coping strategies, resilience training, life skills"
+      }
+    ],
+    "secondary_revenue": "Healthcare worker CME retreats addressing provider burnout",
+    "why_it_works": [
+      "Evidence-based nature therapy proven to reduce anxiety and depression",
+      "Intensive support during critical 7-30 day recovery window",
+      "Peer cohort model increases engagement and accountability",
+      "Gateway's 19-year track record proves operational excellence",
+      "Medi-Cal certification enables scalable, sustainable revenue"
+    ]
+  },
+  "market": {
+    "title": "Market Opportunity",
+    "addressable_market": "2,250 Northern CA youth/year",
+    "total_youth_population": "168,000",
+    "age_range": "ages 15-24",
+    "geography": "Northern California",
+    "demand_drivers": [
+      "Structural crisis in youth mental health (not cyclical)",
+      "Psychiatric hospitalization rates increasing",
+      "Shortage of post-hospitalization care options",
+      "Insurance companies seeking step-down alternatives",
+      "County systems desperate for risk reduction"
+    ],
+    "payer_mix": [
+      {
+        "source": "Medi-Cal",
+        "percentage": 40,
+        "description": "State insurance for low-income youth"
+      },
+      {
+        "source": "Commercial Insurance",
+        "percentage": 30,
+        "description": "Private insurance plans"
+      },
+      {
+        "source": "County Mental Health",
+        "percentage": 20,
+        "description": "Direct county contracts"
+      },
+      {
+        "source": "Grants & Foundations",
+        "percentage": 10,
+        "description": "Impact investing and grants"
+      }
+    ]
+  },
+  "differentiation": {
+    "title": "Why Nature Up Health Wins",
+    "unique_position": "ONLY program specialized for 7-30 day post-hospitalization window",
+    "competitive_advantages": [
+      {
+        "title": "Proven Operator",
+        "description": "Gateway Mountain Center: 19 years, 30,000+ youth, zero major incidents"
+      },
+      {
+        "title": "Medi-Cal Certified",
+        "description": "Already licensed; regulatory pathway clear (rare capability)"
+      },
+      {
+        "title": "First-Mover",
+        "description": "No direct competitors in post-hospitalization niche"
+      },
+      {
+        "title": "Real Estate Backing",
+        "description": "Owned property; stable lease revenue vs. operational risk"
+      },
+      {
+        "title": "Nature-Based Model",
+        "description": "Differentiator in clinical landscape; clinically validated"
+      },
+      {
+        "title": "Cost-Effective",
+        "description": "Lower overhead than traditional inpatient facilities"
+      },
+      {
+        "title": "High Barriers to Entry",
+        "description": "Medi-Cal certification + Forest Service permit + Gateway track record"
+      }
+    ],
+    "competitors": [
+      {
+        "name": "Blue Ridge",
+        "focus": "Wilderness therapy for adolescents",
+        "differentiation": "Not specialized for post-hospitalization; longer programs"
+      },
+      {
+        "name": "ThreePeaks",
+        "focus": "Adventure therapy programs",
+        "differentiation": "General youth population; not acute post-discharge"
+      },
+      {
+        "name": "Pacific Quest",
+        "focus": "Wilderness treatment for behavioral issues",
+        "differentiation": "Broader population; residential program (not step-down)"
+      },
+      {
+        "name": "Newport Academy",
+        "focus": "Residential treatment centers",
+        "differentiation": "High cost; not nature-based; destination model"
+      },
+      {
+        "name": "Traditional Outpatient Clinics",
+        "focus": "Weekly therapy appointments",
+        "differentiation": "No intensive supervision; long wait times"
+      }
+    ]
+  },
+  "investment": {
+    "title": "The Investment Opportunity",
+    "structure": "PropCo/OpCo Model",
+    "structure_explanation": "Nature Up Health (PropCo) owns the property and leases to Gateway Mountain Center (OpCo) for 30 years",
+    "capital_raise": {
+      "total": "$3,000,000",
+      "minimum_per_investor": "$50,000",
+      "maximum_flexibility": "$250,000"
+    },
+    "use_of_funds": [
+      {
+        "category": "Property Acquisition",
+        "amount": 1700000,
+        "percentage": 57,
+        "description": "Purchase High Sierra facility"
+      },
+      {
+        "category": "Renovation & ADA",
+        "amount": 1300000,
+        "percentage": 43,
+        "subcategories": [
+          {
+            "item": "Building renovation",
+            "amount": 450000
+          },
+          {
+            "item": "Clinical facility upgrades",
+            "amount": 300000
+          },
+          {
+            "item": "ADA accessibility",
+            "amount": 200000
+          },
+          {
+            "item": "Emergency egress road (Cal Fire)",
+            "amount": 100000
+          },
+          {
+            "item": "Technology & systems",
+            "amount": 150000
+          },
+          {
+            "item": "Equipment & furnishings",
+            "amount": 100000
+          }
+        ]
+      }
+    ],
+    "why_propco_model": [
+      "Separates real estate investment from operational risk",
+      "Stable, contracted lease revenue",
+      "Real asset backing for investor security",
+      "Gateway remains focused on mission/operations",
+      "Allows separate exit strategies for investors vs. operator"
+    ]
+  },
+  "financial": {
+    "title": "Financial Model & Investor Returns",
+    "annual_revenue_steady_state": 1425000,
+    "annual_expenses_steady_state": 75000,
+    "annual_noi_steady_state": 1350000,
+    "investor_annual_return": 150000,
+    "investor_yield": "5%",
+    "investor_yield_annualized_7yr": "7.3%",
+    "utilization_conservative": "70%",
+    "revenue_breakdown": [
+      {
+        "source": "Youth retreat programs",
+        "percentage": 85,
+        "amount": 1210000,
+        "annual_cohorts": 12,
+        "participants_per_cohort": 8,
+        "charge_per_participant": 12600
+      },
+      {
+        "source": "Healthcare worker CME retreats",
+        "percentage": 15,
+        "amount": 215000,
+        "description": "Secondary revenue addressing provider burnout"
+      }
+    ],
+    "timeline_to_profitability": "Month 9 (first program launch + distributions)",
+    "return_analysis": {
+      "investment": 3000000,
+      "annual_noi_year_3": 150000,
+      "annual_distributions_years_3_7": 750000,
+      "property_appreciation_7yr": 500000,
+      "exit_valuation_year_7": 1570000,
+      "total_return": 820000,
+      "total_return_percentage": "27% over 7 years",
+      "annualized_return": "7.3%"
+    }
+  },
+  "timeline": {
+    "title": "Project Timeline & Milestones",
+    "project_start": "May 1, 2026",
+    "project_end": "July 1, 2027",
+    "duration_months": 14,
+    "milestones": [
+      {
+        "date": "May 1, 2026",
+        "event": "1st Fundraising Close",
+        "description": "Funding close; investor capital committed"
+      },
+      {
+        "date": "May 15, 2026",
+        "event": "Property Acquisition",
+        "description": "Secure property; unlock construction timeline"
+      },
+      {
+        "date": "June 15, 2026",
+        "event": "2nd Fundraising Close",
+        "description": "Complete capital raise"
+      },
+      {
+        "date": "July 1, 2026",
+        "event": "Construction Begins",
+        "description": "Physical project execution starts"
+      },
+      {
+        "date": "October 15, 2026",
+        "event": "Construction Complete",
+        "description": "Renovation and facility upgrades finished"
+      },
+      {
+        "date": "February 1, 2027",
+        "event": "Gateway Operations Ready",
+        "description": "Staff hired, training complete, systems tested"
+      },
+      {
+        "date": "March 1, 2027",
+        "event": "First Program Launches",
+        "description": "First youth cohort arrives; operations begin"
+      },
+      {
+        "date": "July 1, 2027",
+        "event": "First Investor Distributions",
+        "description": "Quarterly investor payouts begin ($37.5K per quarter)"
+      }
+    ],
+    "scenarios": [
+      {
+        "name": "On-Time (Aggressive)",
+        "probability": 40,
+        "description": "Perfect execution; first payout on schedule (Jul 1, 2027)"
+      },
+      {
+        "name": "Realistic (1-Month Buffer)",
+        "probability": 40,
+        "description": "1-month construction slip; first payout on schedule (Jul 1, 2027)"
+      },
+      {
+        "name": "Conservative (2-Month Buffer)",
+        "probability": 20,
+        "description": "2-month slip; first payout delayed to Oct 1, 2027 (3 months late)"
+      }
+    ]
+  },
+  "impact": {
+    "title": "Impact Metrics & Outcomes",
+    "primary_outcome": "≤30% at 90 days post-retreat (from 57% baseline)",
+    "reporting_frequency": "Quarterly starting Q3 2027",
+    "metrics": [
+      {
+        "category": "Clinical Outcomes",
+        "items": [
+          {
+            "metric": "Relapse/re-hospitalization rate",
+            "target": "≤30% at 90 days",
+            "baseline": "57%"
+          },
+          {
+            "metric": "Depression scores (PHQ-9)",
+            "target": "≥50% improvement",
+            "baseline": "Measured at intake"
+          },
+          {
+            "metric": "Anxiety scores (GAD-7)",
+            "target": "≥50% improvement",
+            "baseline": "Measured at intake"
+          },
+          {
+            "metric": "Treatment engagement",
+            "target": "≥85% continue outpatient care",
+            "baseline": "To be established"
+          }
+        ]
+      },
+      {
+        "category": "Experience Metrics",
+        "items": [
+          {
+            "metric": "Participant satisfaction",
+            "target": "≥4.5/5.0",
+            "baseline": "TBD"
+          },
+          {
+            "metric": "Family satisfaction",
+            "target": "≥4.0/5.0",
+            "baseline": "TBD"
+          },
+          {
+            "metric": "Peer support rating",
+            "target": "≥4.5/5.0",
+            "baseline": "TBD"
+          }
+        ]
+      },
+      {
+        "category": "Provider Metrics",
+        "items": [
+          {
+            "metric": "Staff retention",
+            "target": "≥85% annual",
+            "baseline": "To be established"
+          },
+          {
+            "metric": "CME retreat attendance",
+            "target": "≥50 providers/year",
+            "baseline": "New program"
+          },
+          {
+            "metric": "Referral source satisfaction",
+            "target": "≥4.0/5.0",
+            "baseline": "TBD"
+          }
+        ]
+      },
+      {
+        "category": "Financial Metrics",
+        "items": [
+          {
+            "metric": "Program utilization",
+            "target": "≥70% occupancy",
+            "baseline": "Conservative model"
+          },
+          {
+            "metric": "Cost per participant",
+            "target": "≤$12,600",
+            "baseline": "Model estimate"
+          },
+          {
+            "metric": "Investor ROI",
+            "target": "7.3% annualized",
+            "baseline": "Model estimate"
+          }
+        ]
+      }
+    ]
+  },
+  "risks": {
+    "title": "Risk Analysis & Mitigation",
+    "overview": "MEDIUM risk profile (appropriate for healthcare real estate)",
+    "major_risks": [
+      {
+        "rank": 1,
+        "risk": "Wildfire / Natural Disaster",
+        "probability": "Medium",
+        "impact": "High",
+        "mitigation": [
+          "$100K Cal Fire emergency egress road (reduces risk)",
+          "Comprehensive property insurance ($2M+ coverage)",
+          "Fire suppression systems and emergency protocols",
+          "Annual safety audits and updates"
+        ]
+      },
+      {
+        "rank": 2,
+        "risk": "Low Enrollment / Utilization",
+        "probability": "Low",
+        "impact": "High",
+        "mitigation": [
+          "CME retreats provide secondary revenue stream",
+          "Gateway's existing referral relationships",
+          "Conservative model assumes 70% utilization",
+          "Scalable program design (start with 2 cohorts/month)"
+        ]
+      },
+      {
+        "rank": 3,
+        "risk": "Reimbursement Rate Cuts",
+        "probability": "Medium",
+        "impact": "Medium",
+        "mitigation": [
+          "Diversified payer mix (Medi-Cal, insurance, county, grants)",
+          "Long-term lease locked at current rates",
+          "CME revenue provides buffer",
+          "Proactive payer relationship management"
+        ]
+      },
+      {
+        "rank": 4,
+        "risk": "Regulatory/Licensing Delays",
+        "probability": "Low",
+        "impact": "High",
+        "mitigation": [
+          "Gateway already Medi-Cal certified",
+          "Early Forest Service permit engagement (pre-May 2026)",
+          "Legal team onboarded for regulatory support",
+          "Contingency timeline built in (6-month buffer)"
+        ]
+      },
+      {
+        "rank": 5,
+        "risk": "Construction Cost Overruns",
+        "probability": "Medium",
+        "impact": "Medium",
+        "mitigation": [
+          "$50K contingency in budget (1.7% of construction)",
+          "Fixed-price contracts with construction partners",
+          "Phased renovation approach (prioritize clinical areas)",
+          "Regular project oversight and budget tracking"
+        ]
+      },
+      {
+        "rank": 6,
+        "risk": "Gateway Operational Issues",
+        "probability": "Low",
+        "impact": "High",
+        "mitigation": [
+          "30-year lease with performance standards",
+          "Annual audit and compliance checks",
+          "Key person insurance on clinical leadership",
+          "Gateway Board oversight and governance"
+        ]
+      },
+      {
+        "rank": 7,
+        "risk": "Market Downturn / Recession",
+        "probability": "Medium",
+        "impact": "Low",
+        "mitigation": [
+          "Recession-proof demand (youth mental health is essential care)",
+          "Government-funded (Medi-Cal) provides floor",
+          "Long-term contracted lease revenue"
+        ]
+      },
+      {
+        "rank": 8,
+        "risk": "Staff Turnover / Key Person Dependency",
+        "probability": "Medium",
+        "impact": "Medium",
+        "mitigation": [
+          "Competitive wages and benefits",
+          "Professional development opportunities",
+          "Clinical supervision and peer support",
+          "Leadership succession planning"
+        ]
+      },
+      {
+        "rank": 9,
+        "risk": "Participant Safety Incident",
+        "probability": "Low",
+        "impact": "High",
+        "mitigation": [
+          "Comprehensive safety protocols (Gateway's 19-year track record)",
+          "Liability insurance ($5M+ coverage)",
+          "Clinical screening and participant selection",
+          "Adventure activity certifications and training"
+        ]
+      },
+      {
+        "rank": 10,
+        "risk": "Funding Shortfall / Capital Raise Miss",
+        "probability": "Low",
+        "impact": "High",
+        "mitigation": [
+          "Peter's credibility and 40+ year track record",
+          "Gateway's proven model de-risks operations",
+          "Strong investor interest in impact investing",
+          "Flexible capital raise timeline (extension possible)"
+        ]
+      }
+    ]
+  },
+  "team": {
+    "title": "Team & Operations",
+    "founder": {
+      "name": "Peter Mayfield",
+      "title": "Founder & CEO, Nature Up Health",
+      "bio": "Peter Mayfield is a long-term social entrepreneur deeply passionate about the transformative benefits people experience through a profound connection with nature. He has journeyed from two decades as a world-class rock climber and guide (1978–1998) to founding and growing CityRock, the world's first full-service climbing gym (1990–1996). Peter then launched Yosemite Guides, offering eco-tours for park visitors and environmental literacy field trips for school groups (1998–2004). In 2006, Peter founded Gateway Mountain Center, an innovative nonprofit that has served more than 30,000 youth through environmental literacy, mountain adventure, and nature-based sensory immersion programs at Donner Summit. At Gateway, he developed a clinically supervised, nature-based therapeutic mentoring program for youth and young adults facing severe emotional disturbance, complex trauma, and substance dependence. This became the first program of its kind in the U.S. to secure County Behavioral Health contracts and Medicaid reimbursement, marking a breakthrough in integrating nature-based therapy into mainstream mental health care. Today, Peter is channeling his decades of experience into Nature Up Health, advancing proven nature-based methods and systems to improve health and wellbeing at scale."
+    },
+    "operator": {
+      "name": "Gateway Mountain Center",
+      "relationship": "Operating Partner (30-year lease)",
+      "years_experience": 19,
+      "youth_served": 30000,
+      "credentials": "Nonprofit organization; Medi-Cal certified; County Behavioral Health contracts",
+      "track_record": "Zero major incidents across 19 years of winter operations; established referral relationships with hospitals, county, insurance companies",
+      "expertise": [
+        "Program design and clinical protocols",
+        "Staff training and cultural development",
+        "Participant recruitment and intake",
+        "Outcome measurement and reporting",
+        "Safety protocols for high-risk activities",
+        "Winter operations and emergency response",
+        "Payer negotiations"
+      ]
+    }
+  },
+  "exit_strategy": {
+    "title": "Exit Strategy & Investor Returns",
+    "recommended_approach": "Hold-to-Maturity with Annual Payouts",
+    "distribution_timeline": [
+      {
+        "years": "1-2",
+        "distributions": "None",
+        "rationale": "Capital preservation; reinvestment in property/operations"
+      },
+      {
+        "years": "3-7",
+        "distributions": "$150K annually",
+        "rationale": "Full NOI distributed to investors"
+      },
+      {
+        "years": "5+",
+        "liquidity_option": "Secondary market sales available",
+        "description": "Investors can sell stakes to other impact investors"
+      },
+      {
+        "years": "7+",
+        "exit_options": [
+          "Gateway buyback at NOI × 6.5x multiple",
+          "Strategic sale to healthcare real estate investor",
+          "Refinance and return capital to investors"
+        ],
+        "valuation_formula": "NOI × 6.5 multiple + property appreciation"
+      }
+    ],
+    "return_analysis": {
+      "investment": 3000000,
+      "annual_noi_year_3": 150000,
+      "annual_distributions_years_3_7": 750000,
+      "property_appreciation_7yr": 500000,
+      "exit_valuation_year_7": 1570000,
+      "total_return": 820000,
+      "total_return_percentage": "27% over 7 years",
+      "annualized_return": "7.3%"
+    }
+  },
+  "regulatory": {
+    "title": "Regulatory & Permitting Roadmap",
+    "total_timeline_months": 30,
+    "permits": [
+      {
+        "level": "Federal",
+        "authority": "USDA Forest Service (Tahoe National Forest)",
+        "permit_type": "Special Use Permit",
+        "timeline_months": 9,
+        "cost_range": "$10,000 - $25,000",
+        "status": "PENDING - to be submitted May 2026",
+        "requirements": [
+          "Facility management plan",
+          "Environmental assessment (NEPA)",
+          "Forest management compatibility evaluation",
+          "Safety and emergency response protocols",
+          "Public comment period"
+        ]
+      },
+      {
+        "level": "County",
+        "authority": "Nevada County",
+        "permit_type": "Building Permit",
+        "timeline_months": 2,
+        "cost_range": "$6,500",
+        "status": "READY TO SUBMIT",
+        "requirements": [
+          "Architectural plans (completed)",
+          "Structural engineering review",
+          "ADA compliance certification",
+          "Fire/life safety inspection"
+        ]
+      },
+      {
+        "level": "County",
+        "authority": "Nevada County",
+        "permit_type": "Use/Conditional Use Permit",
+        "timeline_months": 2,
+        "cost_range": "$2,000 - $3,000",
+        "status": "TO DETERMINE",
+        "requirements": [
+          "Zoning verification",
+          "Public hearing (if required)"
+        ]
+      },
+      {
+        "level": "County",
+        "authority": "Nevada County",
+        "permit_type": "Grading/Drainage Permit",
+        "timeline_months": 1,
+        "cost_range": "$1,000 - $2,000",
+        "status": "READY TO SUBMIT",
+        "requirements": [
+          "Cal Fire emergency egress road ($100K project)",
+          "Drainage plan compliance"
+        ]
+      },
+      {
+        "level": "State",
+        "authority": "California DHCS",
+        "permit_type": "PRTF License (Psychiatric Residential Treatment Facility)",
+        "timeline_months": 3,
+        "cost_range": "$4,000 - $7,000",
+        "status": "Gateway already certified; renewal process",
+        "requirements": [
+          "PRTF application and documentation",
+          "Medi-Cal certification coordination",
+          "Clinical staffing plan"
+        ]
+      },
+      {
+        "level": "State",
+        "authority": "California DHCS",
+        "permit_type": "Medi-Cal Certification",
+        "timeline_months": 2,
+        "cost_range": "Included in PRTF",
+        "status": "Gateway already certified",
+        "requirements": [
+          "Facility attestation",
+          "Payer agreement finalization"
+        ]
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "questions": [
+      {
+        "question": "Why is this market opportunity attractive?",
+        "answer": "The market is attractive because: (1) Structural crisis, not cyclical - youth mental health rates continue rising; (2) Genuine gap in care - no post-hospitalization options in Northern CA; (3) Multiple payers seeking solutions - counties, hospitals, insurance companies all motivated; (4) Demonstrated demand - Gateway has waitlists for similar programs; (5) Growing national trend toward nature-based therapy."
+      },
+      {
+        "question": "How do you know there's demand?",
+        "answer": "Demand validation comes from: (1) Gateway's existing relationships with 20+ county behavioral health departments and hospitals; (2) Letters of support from potential referral sources; (3) Industry reports showing 57% relapse rates and gap in post-hospitalization care; (4) Payer interest in step-down alternatives; (5) Comparable programs (ThreePeaks, Pacific Quest) have months-long waitlists."
+      },
+      {
+        "question": "What's the competitive advantage?",
+        "answer": "Nature Up Health's competitive advantages: (1) ONLY program specialized for 7-30 day post-hospitalization window; (2) Gateway's proven 19-year track record + Medi-Cal certification (rare); (3) First-mover in underserved niche; (4) Real estate backing (owned property reduces risk); (5) High barriers to entry (regulatory, operational, relationship-based); (6) Nature-based model is clinically validated and differentiator."
+      },
+      {
+        "question": "What happens if enrollment is lower than projected?",
+        "answer": "Multiple mitigation strategies: (1) Conservative model assumes 70% utilization; even at 60% utilization, investor returns are achieved; (2) CME retreat revenue (healthcare worker burnout program) provides secondary revenue; (3) Gateway has 19-year track record of filling beds; (4) Flexible cohort sizing (scale from 2 to 4 cohorts per month); (5) Phased launch reduces initial ramp-up risk."
+      },
+      {
+        "question": "What if reimbursement rates decline?",
+        "answer": "Rate decline mitigation: (1) Diversified payer mix (40% Medi-Cal, 30% insurance, 20% county, 10% grants) reduces single-source risk; (2) 30-year lease locked at current payment rates; (3) Long-term contracts provide some rate protection; (4) CME revenue buffer; (5) Conservative model assumes current rates, so modest declines absorbed; (6) Proactive payer relationship management."
+      },
+      {
+        "question": "How is the PropCo/OpCo structure protected?",
+        "answer": "PropCo/OpCo protection: (1) Legally binding 30-year lease; (2) Rental payment obligations enforceable regardless of program performance; (3) Property remains asset for PropCo if OpCo fails; (4) Insurance and liability isolated to appropriate entity; (5) Board oversight ensures Gateway performs; (6) If Gateway exits, new operator can be found for same property."
+      },
+      {
+        "question": "What if Gateway walks away?",
+        "answer": "Gateway contingency: (1) 30-year lease provides legal recourse; (2) Property reverts to PropCo ownership; (3) Real estate is valuable asset (High Sierra location, infrastructure); (4) Gateway unlikely to exit (nonprofit mission alignment, successful program); (5) Alternative operators available (other nature-based programs); (6) Worst case: property can be sold/refinanced to return capital."
+      },
+      {
+        "question": "What are the regulatory risks?",
+        "answer": "Regulatory risks and mitigations: (1) Forest Service permit (9-month timeline, 6-12 months actual) - mitigated by early engagement, legal support, $10-25K consulting; (2) State licensing (3-month timeline, Gateway already certified) - low risk; (3) County permits (2-4 weeks) - straightforward; (4) Overall: 30-month integrated timeline, but can operate before final approvals; (5) Legal team onboarded to manage."
+      },
+      {
+        "question": "Can you scale this model?",
+        "answer": "Scaling potential: (1) Model is proven by Gateway across 19 years; (2) Can add cohorts incrementally (start 2/month, scale to 4/month); (3) Multi-site replication possible (other National Forests, other states); (4) CME retreat model independently scalable; (5) Nature-based therapy trend national; (6) Regulatory pathway established once first site succeeds; (7) Financial model improves with scale (fixed costs spread across more revenue)."
+      },
+      {
+        "question": "What's the exit timeline and liquidity?",
+        "answer": "Exit timeline: (1) Years 1-2: Hold and reinvest (no distributions); (2) Years 3-7: Annual distributions ($150K/year); (3) Year 5+: Secondary market sales available to other impact investors; (4) Year 7+: Primary exit options = Gateway buyback (at NOI×6.5x), strategic sale to healthcare real estate firm, or refinance; (5) Total value at Year 7: ~$1.57M (includes NOI distributions and property appreciation); (6) Investors can hold longer for additional returns."
+      }
+    ]
+  }
+};
+    </script>
+
+    <!-- CONFIG LOADER - Modified to use embedded CONFIG -->
+    <script>
+        /**
+         * Config Loader for Nature Up Health Investor Pitch Deck Website
+         *
+         * This version works on GitHub Pages by using embedded CONFIG data.
+         * CONFIG is defined above in a <script> tag, so no fetch() is needed.
+         */
+
+        // Format currency
+        function formatCurrency(value) {
+            return '$' + value.toLocaleString();
+        }
+
+        // Format percentage
+        function formatPercent(value) {
+            return value + '%';
+        }
+
+        // Load and populate website using embedded CONFIG
+        function loadAndPopulate() {
+            try {
+                populateWebsite();
+            } catch (error) {
+                console.error('Error populating website:', error);
+                document.body.innerHTML = '<h1>Error loading website</h1><p>' + error.message + '</p>';
+            }
+        }
+
+        // Populate all website content
+        function populateWebsite() {
+            populateHeader();
+            populateExecutiveSummary();
+            populateProblem();
+            populateSolution();
+            populateMarket();
+            populateInvestment();
+            populateFinancial();
+            populateImpact();
+            populateTimeline();
+            populateRisks();
+            populateTeam();
+            populateRegulatory();
+            populateFAQ();
+            populateFooter();
+            setupTabs();
+            setupFAQ();
+        }
+
+        // ===== HEADER & FOOTER =====
+        function populateHeader() {
+            document.getElementById('header-company').textContent = CONFIG.company.name;
+            document.getElementById('header-tagline').textContent = CONFIG.company.tagline;
+
+            const emailLink = document.getElementById('header-email');
+            emailLink.textContent = CONFIG.company.email;
+            emailLink.href = `mailto:${CONFIG.company.email}`;
+
+            const phoneLink = document.getElementById('header-phone');
+            phoneLink.textContent = CONFIG.company.phone;
+            phoneLink.href = `tel:${CONFIG.company.phone.replace(/\./g, '-')}`;
+        }
+
+        function populateFooter() {
+            document.getElementById('footer-company').textContent = CONFIG.company.name;
+            document.getElementById('footer-contact').innerHTML = `
+                <a href="mailto:${CONFIG.company.email}">${CONFIG.company.email}</a> |
+                <a href="tel:${CONFIG.company.phone.replace(/\./g, '-')}">${CONFIG.company.phone}</a>
+            `;
+
+            const contactBtn = document.getElementById('faq-contact');
+            contactBtn.textContent = `Contact: ${CONFIG.company.email}`;
+            contactBtn.href = `mailto:${CONFIG.company.email}`;
+        }
+
+        // ===== EXECUTIVE SUMMARY =====
+        function populateExecutiveSummary() {
+            document.getElementById('exec-capital').textContent = formatCurrency(CONFIG.investment.capital_raise.total);
+            document.getElementById('exec-return').textContent = formatCurrency(CONFIG.financial.investor_annual_return);
+            document.getElementById('exec-annualized').textContent = CONFIG.financial.investor_yield_annualized_7yr;
+            document.getElementById('exec-timeline').textContent = '14 months';
+
+            // Why it matters
+            const whyList = document.getElementById('exec-why');
+            whyList.innerHTML = '';
+            const whyPoints = [
+                `<strong>${CONFIG.problem.relapse_rate}</strong> ${CONFIG.problem.relapse_description}`,
+                `<strong>${CONFIG.problem.crisis_stat}</strong> ${CONFIG.problem.crisis_description}`,
+                `Gateway Mountain Center: <strong>${CONFIG.team.operator.years_experience} years</strong> proven experience`
+            ];
+            whyPoints.forEach(point => {
+                const li = document.createElement('li');
+                li.innerHTML = point;
+                whyList.appendChild(li);
+            });
+
+            // Model
+            const modelList = document.getElementById('exec-model');
+            modelList.innerHTML = '';
+            CONFIG.solution.why_it_works.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                modelList.appendChild(li);
+            });
+
+            // Milestones table
+            const milestonesTable = document.getElementById('exec-milestones');
+            milestonesTable.innerHTML = '<thead><tr><th>Milestone</th><th>Target Date</th></tr></thead><tbody>';
+            CONFIG.timeline.milestones.slice(0, 8).forEach(m => {
+                milestonesTable.innerHTML += `<tr><td>${m.event}</td><td>${m.date}</td></tr>`;
+            });
+            milestonesTable.innerHTML += '</tbody>';
+        }
+
+        // ===== PROBLEM =====
+        function populateProblem() {
+            document.getElementById('problem-title').textContent = CONFIG.problem.title;
+            document.getElementById('problem-crisis').innerHTML = `<strong>${CONFIG.problem.crisis_stat}</strong> ${CONFIG.problem.crisis_description}`;
+
+            // Stats cards
+            const statsContainer = document.getElementById('problem-stats');
+            statsContainer.innerHTML = '';
+            CONFIG.problem.key_stats.forEach(stat => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <h4>${stat.label}</h4>
+                    <p><strong>${stat.value}</strong></p>
+                    <p>${stat.period}</p>
+                `;
+                statsContainer.appendChild(card);
+            });
+
+            // Gap
+            document.getElementById('problem-gap-title').textContent = 'The Critical Gap';
+            document.getElementById('problem-gap-desc').textContent = CONFIG.problem.gap_description;
+
+            // Outcomes
+            const outcomesList = document.getElementById('problem-outcomes');
+            outcomesList.innerHTML = '';
+            [
+                'Youth return to same environments and stressors',
+                `Relapse is nearly inevitable (${CONFIG.problem.relapse_rate} baseline)`,
+                'Re-hospitalization is costly ($150,000+ per stay)',
+                'Long-term outcomes worsen with each cycle',
+                'Healthcare systems bear the costs; youth and families suffer'
+            ].forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                outcomesList.appendChild(li);
+            });
+        }
+
+        // ===== SOLUTION =====
+        function populateSolution() {
+            document.getElementById('solution-title').textContent = CONFIG.solution.title;
+            document.getElementById('solution-desc').textContent = CONFIG.solution.description;
+            document.getElementById('solution-type').textContent = `Program Model: ${CONFIG.solution.program_type}`;
+
+            // Components
+            const componentsContainer = document.getElementById('solution-components');
+            componentsContainer.innerHTML = '';
+            CONFIG.solution.program_components.forEach(comp => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `<h4>${comp.name}</h4><p>${comp.description}</p>`;
+                componentsContainer.appendChild(card);
+            });
+
+            document.getElementById('solution-secondary').textContent = CONFIG.solution.secondary_revenue;
+
+            // Why it works
+            const whyList = document.getElementById('solution-why');
+            whyList.innerHTML = '';
+            CONFIG.solution.why_it_works.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                whyList.appendChild(li);
+            });
+        }
+
+        // ===== MARKET & COMPETITION =====
+        function populateMarket() {
+            document.getElementById('market-addressable').textContent = CONFIG.market.addressable_market;
+            document.getElementById('market-addressable-desc').textContent = `Northern California ages ${CONFIG.market.age_range}`;
+            document.getElementById('market-population').textContent = `${CONFIG.market.total_youth_population.toLocaleString()} total`;
+
+            // Demand drivers
+            const driversListfound = document.getElementById('market-drivers');
+            driversListfound.innerHTML = '';
+            CONFIG.market.demand_drivers.forEach(driver => {
+                const li = document.createElement('li');
+                li.textContent = driver;
+                driversListfound.appendChild(li);
+            });
+
+            // Payer mix table
+            const payersTable = document.getElementById('market-payers');
+            payersTable.innerHTML = '<thead><tr><th>Payer Source</th><th>%</th><th>Description</th></tr></thead><tbody>';
+            CONFIG.market.payer_mix.forEach(payer => {
+                payersTable.innerHTML += `<tr><td>${payer.source}</td><td>${payer.percentage}%</td><td>${payer.description}</td></tr>`;
+            });
+            payersTable.innerHTML += '</tbody>';
+
+            // Competitors
+            const competitorsContainer = document.getElementById('market-competitors');
+            competitorsContainer.innerHTML = '';
+            CONFIG.differentiation.competitors.forEach(comp => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <h4>${comp.name}</h4>
+                    <p><strong>Focus:</strong> ${comp.focus}</p>
+                    <p><strong>Differentiation:</strong> ${comp.differentiation}</p>
+                `;
+                competitorsContainer.appendChild(card);
+            });
+
+            document.getElementById('market-unique').textContent = CONFIG.differentiation.unique_position;
+        }
+
+        // ===== INVESTMENT =====
+        function populateInvestment() {
+            document.getElementById('investment-structure').textContent = CONFIG.investment.structure;
+            document.getElementById('investment-structure-desc').textContent = CONFIG.investment.structure_explanation;
+
+            document.getElementById('inv-total').textContent = formatCurrency(CONFIG.investment.capital_raise.total);
+            document.getElementById('inv-minimum').textContent = formatCurrency(CONFIG.investment.capital_raise.minimum_per_investor);
+
+            // Use of funds table
+            const useTable = document.getElementById('investment-use');
+            useTable.innerHTML = '<thead><tr><th>Category</th><th>Amount</th><th>%</th></tr></thead><tbody>';
+            CONFIG.investment.use_of_funds.forEach(fund => {
+                const amount = formatCurrency(fund.amount);
+                const pct = fund.percentage;
+                useTable.innerHTML += `<tr><td>${fund.category}</td><td>${amount}</td><td>${pct}%</td></tr>`;
+            });
+            useTable.innerHTML += '</tbody>';
+
+            // Why PropCo/OpCo
+            const whyList = document.getElementById('investment-why');
+            whyList.innerHTML = '';
+            CONFIG.investment.why_propco_model.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                whyList.appendChild(li);
+            });
+        }
+
+        // ===== FINANCIAL =====
+        function populateFinancial() {
+            document.getElementById('fin-revenue').textContent = formatCurrency(CONFIG.financial.annual_revenue_steady_state);
+            document.getElementById('fin-expenses').textContent = formatCurrency(CONFIG.financial.annual_expenses_steady_state);
+            document.getElementById('fin-noi').textContent = formatCurrency(CONFIG.financial.annual_noi_steady_state);
+            document.getElementById('fin-investor').textContent = `${formatCurrency(CONFIG.financial.investor_annual_return)} (${CONFIG.financial.investor_yield})`;
+
+            // Revenue breakdown
+            const revenueTable = document.getElementById('financial-revenue');
+            revenueTable.innerHTML = '<thead><tr><th>Revenue Source</th><th>%</th><th>Annual</th></tr></thead><tbody>';
+            CONFIG.financial.revenue_breakdown.forEach(rev => {
+                const amount = formatCurrency(rev.amount);
+                revenueTable.innerHTML += `<tr><td>${rev.source}</td><td>${rev.percentage}%</td><td>${amount}</td></tr>`;
+            });
+            revenueTable.innerHTML += '</tbody>';
+
+            // 7-year analysis
+            document.getElementById('fin-analysis-investment').textContent = formatCurrency(CONFIG.financial.return_analysis.investment);
+            document.getElementById('fin-analysis-distributions').textContent = formatCurrency(CONFIG.financial.return_analysis.annual_distributions_years_3_7);
+            document.getElementById('fin-analysis-appreciation').textContent = formatCurrency(CONFIG.financial.return_analysis.property_appreciation_7yr);
+            document.getElementById('fin-analysis-valuation').textContent = formatCurrency(CONFIG.financial.return_analysis.exit_valuation_year_7);
+            document.getElementById('fin-analysis-total').textContent = `${formatCurrency(CONFIG.financial.return_analysis.total_return)} (${CONFIG.financial.return_analysis.total_return_percentage})`;
+            document.getElementById('fin-analysis-annualized').textContent = CONFIG.financial.return_analysis.annualized_return;
+
+            document.getElementById('fin-conservative').textContent = `Even at ${CONFIG.financial.utilization_conservative}% utilization (conservative model), investor returns are achieved. Upside if higher utilization is reached.`;
+        }
+
+        // ===== IMPACT =====
+        function populateImpact() {
+            document.getElementById('impact-primary').innerHTML = `Reduce relapse to <strong>${CONFIG.impact.primary_outcome}</strong>`;
+            document.getElementById('impact-reporting').textContent = `Quarterly reporting ${CONFIG.impact.reporting_frequency}.`;
+
+            // Clinical outcomes table
+            const clinicalTable = document.getElementById('impact-clinical');
+            clinicalTable.innerHTML = '<thead><tr><th>Metric</th><th>Target</th><th>Baseline</th></tr></thead><tbody>';
+            CONFIG.impact.metrics[0].items.forEach(item => {
+                clinicalTable.innerHTML += `<tr><td>${item.metric}</td><td>${item.target}</td><td>${item.baseline}</td></tr>`;
+            });
+            clinicalTable.innerHTML += '</tbody>';
+
+            // Experience table
+            const experienceTable = document.getElementById('impact-experience');
+            experienceTable.innerHTML = '<thead><tr><th>Metric</th><th>Target</th></tr></thead><tbody>';
+            CONFIG.impact.metrics[1].items.forEach(item => {
+                experienceTable.innerHTML += `<tr><td>${item.metric}</td><td>${item.target}</td></tr>`;
+            });
+            experienceTable.innerHTML += '</tbody>';
+
+            // Provider table
+            const providerTable = document.getElementById('impact-provider');
+            providerTable.innerHTML = '<thead><tr><th>Metric</th><th>Target</th></tr></thead><tbody>';
+            CONFIG.impact.metrics[2].items.concat(CONFIG.impact.metrics[3].items).forEach(item => {
+                providerTable.innerHTML += `<tr><td>${item.metric}</td><td>${item.target}</td></tr>`;
+            });
+            providerTable.innerHTML += '</tbody>';
+        }
+
+        // ===== TIMELINE =====
+        function populateTimeline() {
+            const timelineContainer = document.getElementById('timeline-items');
+            timelineContainer.innerHTML = '';
+
+            CONFIG.timeline.milestones.forEach((milestone, index) => {
+                const item = document.createElement('div');
+                item.className = 'timeline-item';
+                item.innerHTML = `
+                    <div class="timeline-dot">${index + 1}</div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">${milestone.date}</div>
+                        <div class="timeline-title">${milestone.event}</div>
+                        <p>${milestone.description}</p>
+                    </div>
+                `;
+                timelineContainer.appendChild(item);
+            });
+
+            // Scenarios table
+            const scenariosTable = document.getElementById('timeline-scenarios');
+            scenariosTable.innerHTML = '<thead><tr><th>Scenario</th><th>Probability</th><th>Description</th></tr></thead><tbody>';
+            CONFIG.timeline.scenarios.forEach(scenario => {
+                scenariosTable.innerHTML += `<tr><td>${scenario.name}</td><td>${scenario.probability}%</td><td>${scenario.description}</td></tr>`;
+            });
+            scenariosTable.innerHTML += '</tbody>';
+        }
+
+        // ===== RISKS =====
+        function populateRisks() {
+            document.getElementById('risks-overview').textContent = CONFIG.risks.overview;
+
+            const risksContainer = document.getElementById('risks-list');
+            risksContainer.innerHTML = '';
+
+            CONFIG.risks.major_risks.forEach(risk => {
+                const riskDiv = document.createElement('div');
+                riskDiv.className = 'risk-item';
+
+                let mitigationHTML = '<strong>Mitigation:</strong><ul>';
+                risk.mitigation.forEach(m => {
+                    mitigationHTML += `<li>${m}</li>`;
+                });
+                mitigationHTML += '</ul>';
+
+                riskDiv.innerHTML = `
+                    <div class="risk-rank">#${risk.rank}</div>
+                    <div class="risk-name">
+                        <strong>${risk.risk}</strong>
+                        <p style="margin: 10px 0 0 0; font-size: 0.95em;">${mitigationHTML}</p>
+                    </div>
+                    <div class="risk-probability">${risk.probability}</div>
+                    <div class="risk-impact">${risk.impact}</div>
+                `;
+                risksContainer.appendChild(riskDiv);
+            });
+        }
+
+        // ===== TEAM =====
+        function populateTeam() {
+            document.getElementById('team-founder-name').textContent = CONFIG.team.founder.name;
+            document.getElementById('team-founder-title').textContent = CONFIG.team.founder.title;
+            document.getElementById('team-founder-bio').textContent = CONFIG.team.founder.bio;
+
+            // Gateway track record
+            const trackList = document.getElementById('team-gateway-track');
+            trackList.innerHTML = '';
+            [
+                `${CONFIG.team.operator.years_experience} years continuous programming`,
+                `${CONFIG.team.operator.youth_served.toLocaleString()}+ youth served cumulatively`,
+                `13 years clinically supervised therapeutic mentoring`,
+                `${CONFIG.team.operator.credentials}`,
+                'Zero major incidents across 19 years'
+            ].forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                trackList.appendChild(li);
+            });
+
+            // Gateway expertise
+            const expertiseList = document.getElementById('team-gateway-expertise');
+            expertiseList.innerHTML = '';
+            CONFIG.team.operator.expertise.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                expertiseList.appendChild(li);
+            });
+
+            // Why Gateway
+            const whyList = document.getElementById('team-gateway-why');
+            whyList.innerHTML = '';
+            [
+                'Proven capability: 19 years of success',
+                'Regulatory alignment: Already Medi-Cal certified',
+                '19 years of trusted county/hospital relationships',
+                'Mission alignment: Nonprofit organization',
+                'Stability: Not seeking to exit or sell',
+                'Innovation: Pioneered nature-based therapy model'
+            ].forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                whyList.appendChild(li);
+            });
+        }
+
+        // ===== REGULATORY =====
+        function populateRegulatory() {
+            const permitsTable = document.getElementById('regulatory-permits');
+            permitsTable.innerHTML = '<thead><tr><th>Level</th><th>Permit Type</th><th>Timeline</th><th>Status</th></tr></thead><tbody>';
+
+            CONFIG.regulatory.permits.forEach(permit => {
+                permitsTable.innerHTML += `
+                    <tr>
+                        <td>${permit.level}</td>
+                        <td>${permit.permit_type}</td>
+                        <td>${permit.timeline_months} months</td>
+                        <td>${permit.status}</td>
+                    </tr>
+                `;
+            });
+            permitsTable.innerHTML += '</tbody>';
+        }
+
+        // ===== FAQ =====
+        function populateFAQ() {
+            const faqContainer = document.getElementById('faq-items');
+            faqContainer.innerHTML = '';
+
+            CONFIG.faq.questions.forEach((item, index) => {
+                const faqDiv = document.createElement('div');
+                faqDiv.className = 'faq-item';
+                faqDiv.innerHTML = `
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>${item.question}</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>${item.answer}</p>
+                    </div>
+                `;
+                faqContainer.appendChild(faqDiv);
+            });
+        }
+
+        // ===== INTERACTIVITY =====
+        function setupTabs() {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+
+                    // Add active class
+                    tab.classList.add('active');
+                    const sectionId = tab.dataset.section;
+                    document.getElementById(sectionId).classList.add('active');
+
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                });
+            });
+        }
+
+        function setupFAQ() {
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const toggle = this.querySelector('.faq-toggle');
+
+                    answer.classList.toggle('open');
+                    toggle.classList.toggle('open');
+                });
+            });
+        }
+
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector('.faq-toggle');
+
+            answer.classList.toggle('open');
+            toggle.classList.toggle('open');
+        }
+
+        function scrollToSection(sectionId) {
+            const tab = document.querySelector(`[data-section="${sectionId}"]`);
+            tab.click();
+        }
+
+        // Load config on page load
+        document.addEventListener('DOMContentLoaded', loadAndPopulate);
+    </script>
 </body>
 </html>
