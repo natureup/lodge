@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature Up Health - Investor Pitch Deck</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2d5016;
+            --secondary-color: #4a7c2c;
+            --accent-color: #f4a460;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --border-color: #e0e0e0;
+            --success-color: #2d5016;
+            --warning-color: #d97706;
+            --danger-color: #dc2626;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: #fafafa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        header .tagline {
+            font-size: 1.3em;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+
+        header .contact-info {
+            font-size: 1em;
+            opacity: 0.85;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation Tabs */
+        .tabs {
+            background: white;
+            border-bottom: 2px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .tabs-container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tab:hover {
+            background: var(--light-bg);
+            border-bottom-color: var(--secondary-color);
+        }
+
+        .tab.active {
+            border-bottom-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        /* Main Content */
+        .section {
+            display: none;
+            padding: 60px 0;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .card {
+            background: white;
+            border-left: 4px solid var(--secondary-color);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .card h4 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .card p {
+            margin-bottom: 10px;
+        }
+
+        .card.highlight {
+            border-left-color: var(--accent-color);
+            background: rgba(244, 164, 96, 0.05);
+        }
+
+        /* Stats */
+        .stat-box {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin: 15px;
+        }
+
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--text-color);
+            font-size: 1em;
+        }
+
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+            margin: 30px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tr:hover {
+            background: var(--light-bg);
+        }
+
+        /* Key Numbers */
+        .key-numbers {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .numbers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .number-item h4 {
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .number-item .value {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-dot {
+            width: 40px;
+            height: 40px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            min-width: 40px;
+            margin-right: 20px;
+            box-shadow: 0 2px 8px rgba(45, 80, 22, 0.3);
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 2px solid var(--secondary-color);
+            flex: 1;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        .timeline-title {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        /* Risk Matrix */
+        .risk-matrix {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .risk-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid var(--secondary-color);
+            background: var(--light-bg);
+            border-radius: 4px;
+        }
+
+        .risk-rank {
+            font-weight: bold;
+            color: var(--secondary-color);
+            min-width: 30px;
+        }
+
+        .risk-name {
+            flex: 1;
+            margin: 0 20px;
+            font-weight: 500;
+        }
+
+        .risk-probability {
+            background: var(--secondary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            margin-right: 10px;
+        }
+
+        .risk-impact {
+            background: var(--warning-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: white;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            background: var(--light-bg);
+        }
+
+        .faq-question:hover {
+            background: rgba(0,0,0,0.03);
+        }
+
+        .faq-question h4 {
+            flex: 1;
+            margin: 0;
+            color: var(--primary-color);
+        }
+
+        .faq-toggle {
+            font-size: 1.5em;
+            color: var(--secondary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: white;
+        }
+
+        .faq-answer.open {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        .faq-toggle.open {
+            transform: rotate(180deg);
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 20px 10px 20px 0;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(45, 80, 22, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            header .tagline {
+                font-size: 1.1em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .tabs {
+                overflow-x: auto;
+            }
+
+            .tab {
+                padding: 15px 15px;
+                font-size: 0.9em;
+            }
+
+            .numbers-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-info a {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+
+        /* Visibility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-30 {
+            margin-top: 30px;
+        }
+
+        .mb-30 {
+            margin-bottom: 30px;
+        }
+
+        .highlight-box {
+            background: rgba(244, 164, 96, 0.1);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .success-box {
+            background: rgba(45, 80, 22, 0.1);
+            border-left: 4px solid var(--success-color);
+            padding: 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: rgba(217, 119, 6, 0.1);
+            border-left: 4px solid var(--warning-color);
+            padding: 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1 id="header-company"></h1>
+            <p class="tagline" id="header-tagline"></p>
+            <div class="contact-info">
+                <a href="#" id="header-email"></a>
+                <a href="#" id="header-phone"></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs">
+        <div class="tabs-container">
+            <div class="tab active" data-section="executive">Executive Summary</div>
+            <div class="tab" data-section="problem">The Problem</div>
+            <div class="tab" data-section="solution">The Solution</div>
+            <div class="tab" data-section="market">Market & Competition</div>
+            <div class="tab" data-section="investment">The Investment</div>
+            <div class="tab" data-section="financial">Financial Model</div>
+            <div class="tab" data-section="impact">Impact & Outcomes</div>
+            <div class="tab" data-section="timeline">Timeline</div>
+            <div class="tab" data-section="risks">Risks & Mitigation</div>
+            <div class="tab" data-section="team">Team</div>
+            <div class="tab" data-section="regulatory">Regulatory</div>
+            <div class="tab" data-section="faq">FAQ</div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Executive Summary -->
+        <section id="executive" class="section active">
+            <h2>Executive Summary</h2>
+
+            <div class="key-numbers">
+                <h3 style="color: white; margin-top: 0;">The Opportunity</h3>
+                <div class="numbers-grid">
+                    <div class="number-item">
+                        <h4>Capital Raising</h4>
+                        <div class="value" id="exec-capital"></div>
+                    </div>
+                    <div class="number-item">
+                        <h4>Annual Investor Return</h4>
+                        <div class="value" id="exec-return"></div>
+                    </div>
+                    <div class="number-item">
+                        <h4>7-Year Annualized Return</h4>
+                        <div class="value" id="exec-annualized"></div>
+                    </div>
+                    <div class="number-item">
+                        <h4>Timeline to 1st Payout</h4>
+                        <div class="value" id="exec-timeline"></div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Why It Matters</h3>
+            <ul id="exec-why"></ul>
+
+            <h3>The Model</h3>
+            <ul id="exec-model"></ul>
+
+            <h3>Key Milestones</h3>
+            <div class="table-container">
+                <table id="exec-milestones"></table>
+            </div>
+
+            <div class="text-center mt-30">
+                <button class="cta-button" onclick="scrollToSection('investment')">Learn About the Investment</button>
+            </div>
+        </section>
+
+        <!-- The Problem -->
+        <section id="problem" class="section">
+            <h2 id="problem-title"></h2>
+
+            <div class="highlight-box">
+                <h3>California's Youth Mental Health Crisis</h3>
+                <p id="problem-crisis"></p>
+            </div>
+
+            <h3>Key Statistics</h3>
+            <div class="cards" id="problem-stats"></div>
+
+            <h3 id="problem-gap-title"></h3>
+            <p id="problem-gap-desc"></p>
+
+            <h3>The Outcome of Inaction</h3>
+            <ul id="problem-outcomes"></ul>
+        </section>
+
+        <!-- The Solution -->
+        <section id="solution" class="section">
+            <h2 id="solution-title"></h2>
+
+            <p id="solution-desc"></p>
+
+            <h3 id="solution-type"></h3>
+            <div class="cards" id="solution-components"></div>
+
+            <h3>Secondary Revenue</h3>
+            <p id="solution-secondary"></p>
+
+            <h3>Why This Model Works</h3>
+            <ul id="solution-why"></ul>
+        </section>
+
+        <!-- Market & Competition -->
+        <section id="market" class="section">
+            <h2>Market Opportunity & Competitive Landscape</h2>
+
+            <h3>Market Overview</h3>
+            <div class="cards">
+                <div class="card highlight">
+                    <h4>Addressable Market</h4>
+                    <p><strong id="market-addressable"></strong></p>
+                    <p id="market-addressable-desc"></p>
+                </div>
+                <div class="card highlight">
+                    <h4>Total Youth Population</h4>
+                    <p><strong id="market-population"></strong></p>
+                </div>
+            </div>
+
+            <h3>Demand Drivers</h3>
+            <ul id="market-drivers"></ul>
+
+            <h3>Payer Mix (Revenue Diversification)</h3>
+            <div class="table-container">
+                <table id="market-payers"></table>
+            </div>
+
+            <h3>Competitive Landscape</h3>
+            <div class="cards" id="market-competitors"></div>
+
+            <div class="success-box">
+                <h4>Our Unique Position</h4>
+                <p id="market-unique"></p>
+            </div>
+        </section>
+
+        <!-- The Investment -->
+        <section id="investment" class="section">
+            <h2>The Investment Structure</h2>
+
+            <h3 id="investment-structure"></h3>
+            <p id="investment-structure-desc"></p>
+
+            <h3>Capital Requirements</h3>
+            <div class="key-numbers">
+                <div class="numbers-grid">
+                    <div class="number-item">
+                        <h4>Total Capital Raise</h4>
+                        <div class="value" id="inv-total"></div>
+                    </div>
+                    <div class="number-item">
+                        <h4>Minimum per Investor</h4>
+                        <div class="value" id="inv-minimum"></div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Use of Funds</h3>
+            <div class="table-container">
+                <table id="investment-use"></table>
+            </div>
+
+            <h3>Why PropCo/OpCo Model?</h3>
+            <ul id="investment-why"></ul>
+
+            <div class="success-box">
+                <h4>Bottom Line</h4>
+                <p>Real estate investment with contracted tenant (Gateway) provides stable, predictable returns backed by physical asset.</p>
+            </div>
+        </section>
+
+        <!-- Financial Model -->
+        <section id="financial" class="section">
+            <h2>Financial Model & Returns</h2>
+
+            <h3>Steady-State Annual Financials (Year 3+)</h3>
+            <div class="key-numbers">
+                <div class="numbers-grid">
+                    <div class="number-item">
+                        <h4>Annual Revenue</h4>
+                        <div class="value" id="fin-revenue"></div>
+                    </div>
+                    <div class="number-item">
+                        <h4>Operating Expenses</h4>
+                        <div class="value" id="fin-expenses"></div>
+                    </div>
+                    <div class="number-item">
+                        <h4>Net Operating Income</h4>
+                        <div class="value" id="fin-noi"></div>
+                    </div>
+                    <div class="number-item">
+                        <h4>Investor Return</h4>
+                        <div class="value" id="fin-investor"></div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Revenue Breakdown</h3>
+            <div class="table-container">
+                <table id="financial-revenue"></table>
+            </div>
+
+            <h3>7-Year Return Analysis</h3>
+            <div class="highlight-box">
+                <p><strong>Initial Investment:</strong> <span id="fin-analysis-investment"></span></p>
+                <p><strong>Annual Distributions (Yrs 3-7):</strong> <span id="fin-analysis-distributions"></span></p>
+                <p><strong>Property Appreciation (7 yrs):</strong> <span id="fin-analysis-appreciation"></span></p>
+                <p><strong>Exit Valuation (Year 7):</strong> <span id="fin-analysis-valuation"></span></p>
+                <p><strong>Total Return:</strong> <span id="fin-analysis-total"></span></p>
+                <p><strong>Annualized Return:</strong> <span id="fin-analysis-annualized"></span></p>
+            </div>
+
+            <h3>Conservative Utilization Scenario</h3>
+            <p id="fin-conservative"></p>
+        </section>
+
+        <!-- Impact & Outcomes -->
+        <section id="impact" class="section">
+            <h2>Impact Metrics & Outcomes</h2>
+
+            <div class="success-box text-center">
+                <h3>Primary Outcome Goal</h3>
+                <p id="impact-primary"></p>
+            </div>
+
+            <h3>Reporting Framework</h3>
+            <p id="impact-reporting"></p>
+
+            <h3>Clinical Outcomes</h3>
+            <div class="table-container">
+                <table id="impact-clinical"></table>
+            </div>
+
+            <h3>Experience Metrics</h3>
+            <div class="table-container">
+                <table id="impact-experience"></table>
+            </div>
+
+            <h3>Provider & Financial Metrics</h3>
+            <div class="table-container">
+                <table id="impact-provider"></table>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <section id="timeline" class="section">
+            <h2>Project Timeline & Milestones</h2>
+
+            <p>14-month critical path from funding close to first investor payout.</p>
+
+            <div class="timeline" id="timeline-items"></div>
+
+            <h3 style="margin-top: 40px;">Scenario Planning</h3>
+            <div class="table-container">
+                <table id="timeline-scenarios"></table>
+            </div>
+        </section>
+
+        <!-- Risks & Mitigation -->
+        <section id="risks" class="section">
+            <h2>Risk Analysis & Mitigation</h2>
+
+            <p id="risks-overview"></p>
+
+            <h3>Major Risks (Ranked by Priority)</h3>
+            <div class="risk-matrix" id="risks-list"></div>
+
+            <div class="warning-box">
+                <h4>Overall Risk Profile</h4>
+                <p>MEDIUM risk (appropriate for healthcare real estate). Real asset backing + proven operator + contracted revenue = resilient model.</p>
+            </div>
+        </section>
+
+        <!-- Team -->
+        <section id="team" class="section">
+            <h2>Team & Operations</h2>
+
+            <h3>Founder & CEO</h3>
+            <div class="card highlight">
+                <h4 id="team-founder-name"></h4>
+                <p id="team-founder-title"></p>
+                <p id="team-founder-bio"></p>
+            </div>
+
+            <h3>Operating Partner: Gateway Mountain Center</h3>
+            <div class="cards">
+                <div class="card">
+                    <h4>Track Record</h4>
+                    <ul id="team-gateway-track"></ul>
+                </div>
+                <div class="card">
+                    <h4>Core Expertise</h4>
+                    <ul id="team-gateway-expertise"></ul>
+                </div>
+            </div>
+
+            <div class="success-box">
+                <h4>Why Gateway is the Right Operator</h4>
+                <ul id="team-gateway-why"></ul>
+            </div>
+        </section>
+
+        <!-- Regulatory -->
+        <section id="regulatory" class="section">
+            <h2>Regulatory & Permitting Roadmap</h2>
+
+            <p>30-month integrated permitting timeline. Permits run in parallel; can operate before all approvals finalized.</p>
+
+            <div class="table-container">
+                <table id="regulatory-permits"></table>
+            </div>
+
+            <div class="highlight-box">
+                <h4>Key De-Risking Factors</h4>
+                <ul>
+                    <li>Gateway already Medi-Cal certified (most complex approval)</li>
+                    <li>Early Forest Service permit engagement (6+ months pre-submission)</li>
+                    <li>Legal team onboarded to manage federal/state submissions</li>
+                    <li>County permits straightforward (architectural plans ready)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="section">
+            <h2>Frequently Asked Questions</h2>
+
+            <div id="faq-items"></div>
+
+            <div class="text-center mt-30">
+                <p>Still have questions?</p>
+                <a href="#" class="cta-button" id="faq-contact"></a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p><strong id="footer-company"></strong></p>
+            <p id="footer-contact"></p>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
+                This document contains forward-looking statements. Past performance does not guarantee future results.
+                Please consult with your financial advisor before investing.
+            </p>
+        </div>
+    </footer>
+
+    <script src="config-loader.js"></script>
+</body>
+</html>
